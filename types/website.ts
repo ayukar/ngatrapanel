@@ -1,0 +1,1 @@
+export type TWebsite = { websiteName: string; domainType: "domain" | "subdomain"; }
