@@ -25,14 +25,14 @@ export async function middleware(req: NextRequest ) {
     .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
 
   // special case for Vercel preview deployment URLs
-  if (
-    hostname.includes("---") &&
-    hostname.endsWith(`.${process.env.NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX}`)
-  ) {
-    hostname = `${hostname.split("---")[0]}.${
-      process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    }`;
-  }
+  // if (
+  //   hostname.includes("---") &&
+  //   hostname.endsWith(`.${process.env.NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX}`)
+  // ) {
+  //   hostname = `${hostname.split("---")[0]}.${
+  //     process.env.NEXT_PUBLIC_ROOT_DOMAIN
+  //   }`;
+  // }
 
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
@@ -41,24 +41,24 @@ export async function middleware(req: NextRequest ) {
   }`;
 
   // rewrites for app pages
-  if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const session = await auth();
-    if (!session && path !== "/login") {
-      return NextResponse.redirect(new URL("/login", req.url))
-    } else if (session && path == "/login") {
-      return NextResponse.redirect(new URL("/", req.url));
-    }
-    return NextResponse.rewrite(
-      new URL(`/app${path === "/" ? "" : path}`, req.url),
-    );
-  }
+  // if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+  //   const session = await auth();
+  //   if (!session && path !== "/login") {
+  //     return Response.redirect(new URL("/login", req.url))
+  //   } else if (session && path == "/login") {
+  //     return NextResponse.redirect(new URL("/", req.url));
+  //   }
+  //   return NextResponse.rewrite(
+  //     new URL(`/app${path === "/" ? "" : path}`, req.url),
+  //   );
+  // }
 
   // special case for `vercel.pub` domain
-  if (hostname === "vercel.pub") {
-    return NextResponse.redirect(
-      "https://vercel.com/blog/platforms-starter-kit",
-    );
-  }
+  // if (hostname === "vercel.pub") {
+  //   return NextResponse.redirect(
+  //     "https://vercel.com/blog/platforms-starter-kit",
+  //   );
+  // }
 
   // rewrite root application to `/home` folder
   if (
@@ -66,7 +66,7 @@ export async function middleware(req: NextRequest ) {
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
     return NextResponse.rewrite(
-      new URL(`/home${path === "/" ? "" : path}`, req.url),
+      new URL(`/`, req.url),
     );
   }
 
