@@ -9,9 +9,6 @@ const Site = async ({ params }: { params: { domain: string } }) => {
       name: domain,
     },
   });
-  if (!website) {
-    return <NotFound />;
-  }
   return (
     <div>
       <div className="text-xl">Selamat datang di {website?.name}</div>
