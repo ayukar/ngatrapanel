@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Admin",
+  title: "SMM Panel Termurah se Indonesia",
 };
 
 export default async function Page() {

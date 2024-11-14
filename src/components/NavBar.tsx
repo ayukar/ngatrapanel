@@ -16,7 +16,7 @@ export default function NavBar() {
           NgatPanel
         </Link>
         {user && <UserButton user={user} />}
-        {!user && session.status !== "loading" && <SignInButton />}
+        {!user && <SignInButton />}
       </nav>
     </header>
   );
@@ -24,6 +24,6 @@ export default function NavBar() {
 
 function SignInButton() {
   return <Link href={"/signin"}>
-    <Button>Sign in</Button>;
+    <Button>Sign in</Button>
   </Link>
 }
