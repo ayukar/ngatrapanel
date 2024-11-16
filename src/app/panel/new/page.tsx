@@ -50,7 +50,7 @@ const DomainSelection: React.FC = () => {
               </div>
               <h2 className="text-lg font-bold text-gray-800">Select domain type</h2>
               <p className="mt-2 text-sm text-gray-500">
-                If you don't have a domain yet, you can use a free Socpanel subdomain
+                {`If you don't have a domain, you can register one at name.com.`}
               </p>
             </div>
             <div className="mt-6 space-y-4">
@@ -121,7 +121,7 @@ const DomainSelection: React.FC = () => {
               </div>
               <h2 className="text-lg font-bold text-gray-800">Attach your domain</h2>
               <p className="mt-2 text-sm text-gray-500">
-                If you don’t have a domain, you can register it at <a href="https://name.com" className="text-blue-500 hover:underline">name.com</a>
+                {`If you don’t have a domain, you can register it at`} <a href="https://name.com" className="text-blue-500 hover:underline">name.com</a>
               </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
@@ -129,9 +129,8 @@ const DomainSelection: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Type your domain"
-                  className={`w-full rounded-lg border px-4 py-3 ${
-                    errors.domain ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className={`w-full rounded-lg border px-4 py-3 ${errors.domain ? "border-red-500" : "border-gray-300"
+                    }`}
                   {...register("domain", { required: "Domain is required" })}
                 />
                 {errors.domain && (
