@@ -13,7 +13,8 @@ export const createWeb = async (data:TWebsite)=>{
             data : {
                 name : data?.websiteName,
                 userId : session?.user.id || "",
-                type : data?.domainType
+                content : "content website",
+                subdomain : data?.websiteName,
             }
         })
         return {

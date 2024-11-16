@@ -17,6 +17,7 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
+  username      String?
   name          String?
   email         String    @unique
   emailVerified DateTime?
@@ -76,11 +77,14 @@ model VerificationToken {
 }
 
 model Website {
-  id            String    @id @default(cuid())
-  name          String
-  type          String
-  userId        String
-  user          User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @default(cuid())
+  name      String
+  subdomain String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  content   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("website")
 }
