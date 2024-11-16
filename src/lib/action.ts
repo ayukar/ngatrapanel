@@ -10,6 +10,7 @@ export const createWeb = async (data:TWebsite)=>{
     
     try {
         await prisma.website.create({
+            
             data : {
                 name : data?.websiteName,
                 userId : session?.user.id || "",
