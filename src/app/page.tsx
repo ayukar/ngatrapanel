@@ -1,12 +1,25 @@
+import Navbar from "@/components/NavBar";
+import FeatureCards from "@/components/landing/FeatureCards";
+import Features from "@/components/landing/FeatureSection";
+import Footer from "@/components/landing/Footer";
+import Hero from "@/components/landing/HeroSection";
+import Pricing from "@/components/landing/PricingSection";
+import ServiceCards from "@/components/landing/ServiceCards";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 
 export default async function Home() {
 
   return (
-    <main className="flex flex-col items-center gap-6 px-3 py-10">
-      <h1 className="text-center text-4xl font-bold">SMM, PPOB, dan Voucher Game Termurah se Indonesia</h1>
-     
+    <main className="flex flex-col items-center gap-6 px-3 py-10 bg-gradient-to-r from-purple-900 via-blue-900 to-black ">
+      <Navbar/>
+      <Hero />
+      <section className="container mx-auto mt-10 px-4">
+        <FeatureCards />
+        <h2 className="mt-16 text-3xl font-bold text-white">Our Services</h2>
+        <ServiceCards />
+      </section>
+      <Footer />
     </main>
   );
 }
