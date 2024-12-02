@@ -1,12 +1,8 @@
 import Navbar from "@/components/NavBar";
 import FeatureCards from "@/components/landing/FeatureCards";
-import Features from "@/components/landing/FeatureSection";
 import Footer from "@/components/landing/Footer";
 import Hero from "@/components/landing/HeroSection";
-import Pricing from "@/components/landing/PricingSection";
 import ServiceCards from "@/components/landing/ServiceCards";
-import prisma from "@/lib/prisma";
-import Link from "next/link";
 
 export default async function Home() {
 
